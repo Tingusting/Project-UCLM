@@ -31,13 +31,15 @@
             panel2 = new Panel();
             button1 = new Button();
             panel1 = new Panel();
+            label1 = new Label();
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
-            button2 = new Button();
             panel3 = new Panel();
+            label2 = new Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -60,18 +62,29 @@
             button1.TabIndex = 2;
             button1.Text = "【﻿\u23fb】";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel1
             // 
             panel1.BackColor = Color.SlateBlue;
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
             panel1.Location = new Point(0, 72);
             panel1.Name = "panel1";
-            panel1.Size = new Size(149, 697);
+            panel1.Size = new Size(153, 697);
             panel1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial Narrow", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(30, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(90, 40);
+            label1.TabIndex = 7;
+            label1.Text = "Menu";
             // 
             // button5
             // 
@@ -82,6 +95,7 @@
             button5.TabIndex = 6;
             button5.Text = "Report";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -92,6 +106,7 @@
             button4.TabIndex = 5;
             button4.Text = "Tenants";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -102,23 +117,25 @@
             button3.TabIndex = 4;
             button3.Text = "Rooms";
             button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.MediumSlateBlue;
-            button2.Location = new Point(3, 37);
-            button2.Name = "button2";
-            button2.Size = new Size(143, 73);
-            button2.TabIndex = 3;
-            button2.Text = "Menu";
-            button2.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panel3
             // 
+            panel3.Controls.Add(label2);
             panel3.Location = new Point(152, 72);
             panel3.Name = "panel3";
             panel3.Size = new Size(1210, 697);
             panel3.TabIndex = 4;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial Narrow", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(406, 195);
+            label2.Name = "label2";
+            label2.Size = new Size(179, 40);
+            label2.TabIndex = 8;
+            label2.Text = "GOOD DAY!";
             // 
             // Main
             // 
@@ -130,9 +147,14 @@
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Main";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Main";
+            Load += Main_Load;
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -144,7 +166,8 @@
         private Button button5;
         private Button button4;
         private Button button3;
-        private Button button2;
         private Panel panel3;
+        private Label label1;
+        private Label label2;
     }
 }

@@ -11,7 +11,7 @@ namespace Login
         {
             SignUp signup = new SignUp();
             signup.Show();
-            this.Hide(); // hide login form
+            this.Hide(); 
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,10 +46,10 @@ namespace Login
 
             if (loginSuccess)
             {
-                // Open MainForm if login is successful
+               
                 Main mainForm = new Main();
                 mainForm.Show();
-                this.Hide(); // Hide login form
+                this.Hide(); 
             }
             else
             {
