@@ -61,7 +61,28 @@ namespace Login
 
         private void button5_Click(object sender, EventArgs e)
         {
-            loadform(new Report());
+            loadform(new Dashboard());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Ask confirmation
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to log out?",
+                "Log Out",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                // Open login form
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+
+                // Close current form (Dashboard / Main)
+                this.Hide();
+            }
         }
     }
 }

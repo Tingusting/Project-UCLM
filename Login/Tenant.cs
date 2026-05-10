@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Login
 {
@@ -17,6 +18,15 @@ namespace Login
         string filePath = "rooms.json";
         public string TenantName { get; private set; }
         private List<RoomInfo> rooms;
+
+
+        public int TenantAge { get; private set; }
+
+        public string ContactNumber { get; private set; }
+
+        public string Address { get; private set; }
+
+        public string ValidID { get; private set; }
         public Tenant(List<RoomInfo> roomList)
         {
             InitializeComponent();
@@ -27,8 +37,19 @@ namespace Login
         {
             if (!string.IsNullOrWhiteSpace(txtTenantName.Text))
             {
+                // SAVE TENANT INFO
                 TenantName = txtTenantName.Text;
+
+                TenantAge = (int)numAge.Value;
+
+                ContactNumber = txtContact.Text;
+
+                Address = txtAddress.Text;
+
+                ValidID = cmbValidID.SelectedItem.ToString();
+
                 this.DialogResult = DialogResult.OK;
+
                 this.Close();
             }
             else
@@ -78,6 +99,16 @@ namespace Login
         {
             LoadRooms();        // reload latest data
             LoadTenantNames();
+        }
+
+        private void txtTenantName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

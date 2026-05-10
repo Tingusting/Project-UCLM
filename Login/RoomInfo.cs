@@ -14,6 +14,13 @@ namespace Login
         public DateTime? DueDate { get; set; }   // ✅ added
         public bool IsNotified { get; set; }      // ✅ prevent spam alerts
         public int TotalCustomers { get; set; }
+        public int Age { get; set; }
+
+        public string ContactNumber { get; set; }
+
+        public string Address { get; set; }
+
+        public string ValidID { get; set; }
         public override string ToString()
         {
             return $"Room {RoomNumber} - {(IsAvailable ? "Available" : "Occupied")}";

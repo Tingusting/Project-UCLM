@@ -34,12 +34,12 @@
             // 
             // listBox1
             // 
-            listBox1.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            listBox1.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Italic, GraphicsUnit.Point, 0);
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 37;
-            listBox1.Location = new Point(409, 100);
+            listBox1.ItemHeight = 38;
+            listBox1.Location = new Point(360, 100);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(339, 374);
+            listBox1.Size = new Size(570, 346);
             listBox1.TabIndex = 0;
             // 
             // TenantShow

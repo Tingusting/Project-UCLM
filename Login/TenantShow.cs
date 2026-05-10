@@ -40,13 +40,39 @@ namespace Login
             listBox1.Items.Clear();
 
             var tenants = rooms
-                .Where(r => !r.IsAvailable && !string.IsNullOrEmpty(r.TenantName))
-                .Select(r => r.TenantName)
+                .Where(r => !r.IsAvailable &&
+                            !string.IsNullOrEmpty(r.TenantName))
                 .ToList();
 
-            foreach (var t in tenants)
+            foreach (var room in tenants)
             {
-                listBox1.Items.Add(t);
+                listBox1.Items.Add(
+                    $"Room: {room.RoomNumber}"
+                );
+
+                listBox1.Items.Add(
+                    $"Name: {room.TenantName}"
+                );
+
+                listBox1.Items.Add(
+                    $"Age: {room.Age}"
+                );
+
+                listBox1.Items.Add(
+                    $"Contact: {room.ContactNumber}"
+                );
+
+                listBox1.Items.Add(
+                    $"Address: {room.Address}"
+                );
+
+                listBox1.Items.Add(
+                    $"Valid ID: {room.ValidID}"
+                );
+
+                listBox1.Items.Add(
+                    "--------------------------"
+                );
             }
         }
     }

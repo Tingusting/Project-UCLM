@@ -31,7 +31,7 @@ namespace Login
             SetupDuePanel();
             UpdateDuePanel();
             // ✅ timer setup
-            dueTimer.Interval = 60000; // 1 minute
+            dueTimer.Interval = 1000;
             dueTimer.Tick += timer1_Tick;
             dueTimer.Start();
 
@@ -93,11 +93,13 @@ namespace Login
             {
                 for (int c = 0; c < cols; c++)
                 {
-                    if (index >= rooms.Count) break;
+                    if (index >= rooms.Count)
+                        break;
 
                     var room = rooms[index];
 
                     Button btn = new Button();
+
                     btn.Width = buttonWidth;
                     btn.Height = buttonHeight;
 
@@ -106,12 +108,30 @@ namespace Login
 
                     btn.Tag = room;
 
-                    // ✅ SHOW NAME HERE
+                    string timerText = "";
+
+                    // SHOW COUNTDOWN
+                    if (!room.IsAvailable && room.DueDate.HasValue)
+                    {
+                        TimeSpan remaining =
+                            room.DueDate.Value - DateTime.Now;
+
+                        if (remaining.TotalSeconds > 0)
+                        {
+                            timerText =
+                                $"{remaining.Hours:D2}:{remaining.Minutes:D2}:{remaining.Seconds:D2}";
+                        }
+                        else
+                        {
+                            timerText = "DUE";
+                        }
+                    }
+
                     btn.Text = room.IsAvailable
                         ? $"Room {room.RoomNumber}\nAvailable"
-                        : $"Room {room.RoomNumber}\n{room.TenantName}";
+                        : $"Room {room.RoomNumber}\n{room.TenantName}\n{timerText}";
 
-                    btn.Font = new Font("Arial", 11, FontStyle.Bold);
+                    btn.Font = new Font("Arial", 10, FontStyle.Bold);
 
                     UpdateButtonColor(btn, room);
 
@@ -151,13 +171,27 @@ namespace Login
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     room.IsAvailable = false;
+
                     room.TenantName = form.TenantName;
-                    room.DueDate = DateTime.Now.AddDays(7);
+
+                    room.Age = form.TenantAge;
+
+                    room.ContactNumber = form.ContactNumber;
+
+                    room.Address = form.Address;
+
+                    room.ValidID = form.ValidID;
+
+                    room.DueDate = DateTime.Now.AddHours(24);
+
                     room.IsNotified = false;
+
                     room.TotalCustomers++;
 
                     SaveRooms();
+
                     CreateRoomButtons();
+
                     UpdateDuePanel();
                 }
             }
